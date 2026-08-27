@@ -13,7 +13,8 @@ import {
 
 const toRad = (d) => (d * Math.PI) / 180;
 const MAP_CENTER = { lng: 105.807406, lat: 21.402464 };
-const BOUNDS_PADDING = 0.006;
+// Keep navigation focused on the site: ~130 m from the configured coordinate.
+const BOUNDS_PADDING = 0.0012;
 const NEARBY_BUILDINGS = [
   { id: 'den-dan-ha', name: 'Đền Đan Hà', path: './DinhDanHa-20260827T040936Z-1-001/DinhDanHa/Den_Dan_Ha.glb' },
   { id: 'chua-van-kim', name: 'Chùa Vạn Kim', path: './DinhDanHa-20260827T040936Z-1-001/DinhDanHa/Chua_Van_Kim.glb' },
@@ -29,6 +30,7 @@ const app = createApp({
     const placementMode = ref(false);
     const placingItem = ref(null);
     const showBuildingPicker = ref(false);
+    const moveUnlocked = ref(false);
 
     // ---- Decorations state ----
     const decorations = reactive([]);
@@ -160,6 +162,11 @@ const app = createApp({
       if (hits.length > 0) {
         const group = findModelGroup(hits[0]);
         if (group && getModelConfig(group.name)) {
+          // Keep models safe from accidental drags while the movement lock is on.
+          if (!moveUnlocked.value) {
+            selectDecoById(group.name);
+            return;
+          }
           // Prepare for potential drag
           dragStartMouse = { x: e.clientX, y: e.clientY };
           dragGroup = group;
@@ -337,7 +344,7 @@ const app = createApp({
       mapRef = new maplibregl.Map({
         container: 'map',
         style: 'https://tiles.openfreemap.org/styles/bright',
-        zoom: 18,
+        zoom: 19,
         center: modelOrigin,
         pitch: 60,
         canvasContextAttributes: { antialias: true },
@@ -345,7 +352,7 @@ const app = createApp({
           [lng - BOUNDS_PADDING, lat - BOUNDS_PADDING],
           [lng + BOUNDS_PADDING, lat + BOUNDS_PADDING],
         ],
-        minZoom: 16,
+        minZoom: 18,
         maxZoom: 23,
       });
 
@@ -470,6 +477,7 @@ const app = createApp({
       isDragging,
       showBuildingPicker,
       nearbyBuildings: NEARBY_BUILDINGS,
+      moveUnlocked,
       startPlacement,
       cancelPlacement,
       selectDecoById,

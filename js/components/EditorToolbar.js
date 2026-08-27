@@ -4,8 +4,9 @@ export default {
     placementMode: { type: Boolean, default: false },
     hasSelection: { type: Boolean, default: false },
     placingName: { type: String, default: '' },
+    moveUnlocked: { type: Boolean, default: false },
   },
-  emits: ['save', 'delete', 'cancel-place', 'add-building'],
+  emits: ['save', 'delete', 'cancel-place', 'add-building', 'toggle-move-lock'],
   template: `
     <div class="editor-toolbar">
       <div class="btn-group shadow-sm">
@@ -22,6 +23,11 @@ export default {
         <button v-if="!placementMode" class="btn btn-outline-primary btn-sm"
                 @click="$emit('add-building')">
           + Thêm công trình
+        </button>
+        <button v-if="!placementMode" class="btn btn-sm"
+                :class="moveUnlocked ? 'btn-warning' : 'btn-success'"
+                @click="$emit('toggle-move-lock')">
+          {{ moveUnlocked ? 'Đang mở di chuyển' : 'Đang khóa vị trí' }}
         </button>
         <button v-if="hasSelection" class="btn btn-danger btn-sm"
                 @click="$emit('delete')">
