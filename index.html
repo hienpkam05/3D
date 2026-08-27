@@ -32,14 +32,28 @@
         <div class="editor-main">
           <editor-toolbar
             :placement-mode="placementMode"
-            :has-selection="!!selectedDecoId"
+            :has-selection="canDelete"
             :placing-name="placingItem?.name || ''"
             @save="saveConfig"
+            @add-building="showBuildingPicker = true"
             @delete="deleteDeco()"
             @cancel-place="cancelPlacement"
           ></editor-toolbar>
 
           <div id="map"></div>
+
+          <div v-if="showBuildingPicker" class="building-picker shadow">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <strong class="small">Thêm công trình</strong>
+              <button class="btn-close btn-close-sm" @click="showBuildingPicker = false"></button>
+            </div>
+            <p class="text-muted small mb-2">Chọn model, sau đó click lên map để đặt.</p>
+            <button v-for="item in nearbyBuildings" :key="item.id"
+                    class="btn btn-outline-primary btn-sm w-100 text-start mb-1"
+                    @click="startPlacement(item)">
+              {{ item.name }}
+            </button>
+          </div>
 
           <div v-if="placementMode" class="editor-status">
             <span class="badge bg-warning text-dark shadow-sm">

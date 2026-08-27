@@ -5,7 +5,7 @@ export default {
     hasSelection: { type: Boolean, default: false },
     placingName: { type: String, default: '' },
   },
-  emits: ['save', 'delete', 'cancel-place'],
+  emits: ['save', 'delete', 'cancel-place', 'add-building'],
   template: `
     <div class="editor-toolbar">
       <div class="btn-group shadow-sm">
@@ -18,6 +18,10 @@ export default {
         </span>
         <button class="btn btn-primary btn-sm" @click="$emit('save')">
           💾 Lưu config
+        </button>
+        <button v-if="!placementMode" class="btn btn-outline-primary btn-sm"
+                @click="$emit('add-building')">
+          + Thêm công trình
         </button>
         <button v-if="hasSelection" class="btn btn-danger btn-sm"
                 @click="$emit('delete')">

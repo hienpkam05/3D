@@ -14,6 +14,11 @@ import {
 const toRad = (d) => (d * Math.PI) / 180;
 const MAP_CENTER = { lng: 105.807406, lat: 21.402464 };
 const BOUNDS_PADDING = 0.006;
+const NEARBY_BUILDINGS = [
+  { id: 'den-dan-ha', name: 'Đền Đan Hà', path: './DinhDanHa-20260827T040936Z-1-001/DinhDanHa/Den_Dan_Ha.glb' },
+  { id: 'chua-van-kim', name: 'Chùa Vạn Kim', path: './DinhDanHa-20260827T040936Z-1-001/DinhDanHa/Chua_Van_Kim.glb' },
+  { id: 'dinh-chua-nguyen-tan', name: 'Đình Chùa Nguyễn Tân', path: './DinhDanHa-20260827T040936Z-1-001/DinhDanHa/Dinh_Chua_Nguyen_Tan.glb' },
+];
 
 const app = createApp({
   components: { LibraryPanel, PropertiesPanel, EditorToolbar },
@@ -23,14 +28,27 @@ const app = createApp({
     const libraryItems = ref([]);
     const placementMode = ref(false);
     const placingItem = ref(null);
+    const showBuildingPicker = ref(false);
 
     // ---- Decorations state ----
     const decorations = reactive([]);
+    const mainModelConfigs = reactive([]);
     const selectedDecoId = ref(null);
 
     const selectedDeco = computed(() =>
-      decorations.find(d => d.id === selectedDecoId.value) || null
+      [...mainModelConfigs, ...decorations].find(d => d.id === selectedDecoId.value) || null
     );
+    const canDelete = computed(() => selectedDeco.value?.type === 'decoration');
+
+    function getModelConfig(id) {
+      return mainModelConfigs.find(m => m.id === id)
+        || decorations.find(d => d.id === id)
+        || null;
+    }
+
+    function getTransformTarget(group) {
+      return group.userData.isDecoration ? group : group.children[0];
+    }
 
     // ---- Drag state ----
     const isDragging = ref(false);
@@ -47,6 +65,7 @@ const app = createApp({
     let dragging = false;
     let dragStartMouse = null;
     let dragGroup = null;
+    let dragTarget = null;
     let dragDecoId = null;
     let dragOffset = new THREE.Vector3();
     const DRAG_THRESHOLD = 4; // px before drag starts
@@ -60,6 +79,7 @@ const app = createApp({
 
     // ---- Placement mode ----
     function startPlacement(item) {
+      showBuildingPicker.value = false;
       placingItem.value = item;
       placementMode.value = true;
       deselectDeco();
@@ -135,14 +155,15 @@ const app = createApp({
         return;
       }
 
-      // Raycast to check if decoration hit
+      // Raycast to check if a model (main model or decoration) is hit
       const hits = doRaycast(cx, cy, canvasEl, storedProjMatrix, threeScene);
       if (hits.length > 0) {
         const group = findModelGroup(hits[0]);
-        if (group.userData.isDecoration) {
+        if (group && getModelConfig(group.name)) {
           // Prepare for potential drag
           dragStartMouse = { x: e.clientX, y: e.clientY };
           dragGroup = group;
+          dragTarget = getTransformTarget(group);
           dragDecoId = group.name;
           dragDidMove = false;
 
@@ -150,9 +171,9 @@ const app = createApp({
           const groundPt = intersectGround(cx, cy, canvasEl, storedProjMatrix);
           if (groundPt) {
             dragOffset.set(
-              group.position.x - groundPt.x,
+              dragTarget.position.x - groundPt.x,
               0,
-              group.position.z - groundPt.z
+              dragTarget.position.z - groundPt.z
             );
           }
         }
@@ -192,11 +213,11 @@ const app = createApp({
       const newX = parseFloat((groundPt.x + dragOffset.x).toFixed(2));
       const newZ = parseFloat((groundPt.z + dragOffset.z).toFixed(2));
 
-      dragGroup.position.x = newX;
-      dragGroup.position.z = newZ;
+      dragTarget.position.x = newX;
+      dragTarget.position.z = newZ;
 
       // Sync reactive data
-      const deco = decorations.find(d => d.id === dragDecoId);
+      const deco = getModelConfig(dragDecoId);
       if (deco) {
         deco.position.x = newX;
         deco.position.z = newZ;
@@ -221,7 +242,7 @@ const app = createApp({
         }
       } else if (dragStartMouse && !dragDidMove) {
         // It was a click (no drag happened) -> select or deselect
-        if (dragGroup && dragGroup.userData.isDecoration) {
+        if (dragGroup && getModelConfig(dragDecoId)) {
           selectDecoById(dragDecoId);
         }
       }
@@ -230,6 +251,7 @@ const app = createApp({
       // Reset drag state
       dragStartMouse = null;
       dragGroup = null;
+      dragTarget = null;
       dragDecoId = null;
     }
 
@@ -249,20 +271,21 @@ const app = createApp({
       if (!deco) return;
       const group = decoGroups[deco.id];
       if (!group) return;
+      const target = getTransformTarget(group);
 
       if (field === 'position') {
         deco.position[axis] = value;
-        group.position.set(deco.position.x, deco.position.y, deco.position.z);
+        target.position.set(deco.position.x, deco.position.y, deco.position.z);
       } else if (field === 'rotation') {
         deco.rotation[axis] = value;
-        group.rotation.set(toRad(deco.rotation.x), toRad(deco.rotation.y), toRad(deco.rotation.z));
+        target.rotation.set(toRad(deco.rotation.x), toRad(deco.rotation.y), toRad(deco.rotation.z));
       } else if (field === 'scale') {
         if (axis === 'uniform') {
           deco.scale.x = deco.scale.y = deco.scale.z = value;
         } else {
           deco.scale[axis] = value;
         }
-        group.scale.set(deco.scale.x, deco.scale.y, deco.scale.z);
+        target.scale.set(deco.scale.x, deco.scale.y, deco.scale.z);
       }
 
       removeOutlines();
@@ -287,44 +310,21 @@ const app = createApp({
 
     // ---- Save config ----
     function saveConfig() {
-      fetch('./models-config.json')
-        .then(r => r.json())
-        .then(original => {
-          // Remove old decorations, add current ones
-          const mainModels = original.models.filter(m => m.type !== 'decoration');
-          const decoEntries = decorations.map(d => ({
-            id: d.id,
-            name: d.name,
-            type: 'decoration',
-            path: d.path,
-            position: { ...d.position },
-            rotation: { ...d.rotation },
-            scale: { ...d.scale },
-            libraryId: d.libraryId,
-          }));
-
-          const output = { models: [...mainModels, ...decoEntries] };
-          const blob = new Blob([JSON.stringify(output, null, 2)], { type: 'application/json' });
-          const url = URL.createObjectURL(blob);
-
-          const a = document.createElement('a');
-          a.href = url;
-          a.download = 'models-config.json';
-          a.click();
-          URL.revokeObjectURL(url);
-        })
-        .catch(err => {
-          console.error('Error reading config:', err);
-          // Fallback: just export decorations
-          const output = { models: decorations.map(d => ({ ...d })) };
-          const blob = new Blob([JSON.stringify(output, null, 2)], { type: 'application/json' });
-          const url = URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.href = url;
-          a.download = 'models-config.json';
-          a.click();
-          URL.revokeObjectURL(url);
-        });
+      const output = {
+        models: [...mainModelConfigs, ...decorations].map(model => ({
+          ...model,
+          position: { ...model.position },
+          rotation: { ...model.rotation },
+          scale: { ...model.scale },
+        })),
+      };
+      const blob = new Blob([JSON.stringify(output, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'models-config.json';
+      a.click();
+      URL.revokeObjectURL(url);
     }
 
     // ---- Map & Three.js init ----
@@ -403,8 +403,12 @@ const app = createApp({
               const mainModels = cfg.models.filter(m => m.type !== 'decoration');
               const decoModels = cfg.models.filter(m => m.type === 'decoration');
 
-              // Load main models (read-only)
-              mainModels.forEach(m => loadMainModel(m, this.scene));
+              // Main models can now be selected, dragged, rotated and scaled.
+              mainModels.forEach(async (m) => {
+                const group = await loadMainModel(m, this.scene);
+                decoGroups[m.id] = group;
+                mainModelConfigs.push(reactive({ ...m }));
+              });
 
               // Load existing decorations
               decoModels.forEach(async (d) => {
@@ -462,7 +466,10 @@ const app = createApp({
       decorations,
       selectedDecoId,
       selectedDeco,
+      canDelete,
       isDragging,
+      showBuildingPicker,
+      nearbyBuildings: NEARBY_BUILDINGS,
       startPlacement,
       cancelPlacement,
       selectDecoById,
