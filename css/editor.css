@@ -1,0 +1,44 @@
+html, body, #app { height: 100%; margin: 0; }
+#map { height: 100%; }
+
+/* Layout */
+.editor-layout { display: flex; height: 100vh; overflow: hidden; }
+.editor-sidebar { width: 280px; flex-shrink: 0; overflow-y: auto; z-index: 10; }
+.editor-main { flex: 1; position: relative; min-width: 0; }
+.editor-right { width: 300px; flex-shrink: 0; overflow-y: auto; z-index: 10; }
+
+/* Toolbar */
+.editor-toolbar {
+  position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
+  z-index: 20; pointer-events: auto;
+}
+
+/* Placement cursor */
+.placement-mode #map canvas { cursor: crosshair !important; }
+
+/* Dragging cursor */
+.dragging-mode, .dragging-mode * { cursor: grabbing !important; }
+.dragging-mode #map canvas { cursor: grabbing !important; }
+
+/* Library item */
+.lib-item {
+  cursor: pointer; padding: 6px 10px; border-radius: 6px;
+  font-size: 13px; transition: background 0.15s;
+}
+.lib-item:hover { background: #e9ecef; }
+.lib-item.active { background: #2b6f85; color: #fff; }
+
+/* Selection highlight indicator */
+.deco-item { cursor: pointer; font-size: 13px; border-radius: 6px; transition: background 0.15s; }
+.deco-item:hover { background: #f0f0f0; }
+.deco-item.active { background: #e8f4f8; border-color: #2b6f85 !important; }
+
+/* Property input */
+.prop-input { width: 80px; }
+.prop-label { font-size: 12px; color: #666; min-width: 18px; text-align: center; }
+
+/* Status */
+.editor-status {
+  position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
+  z-index: 20; font-size: 12px;
+}
