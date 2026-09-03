@@ -27,7 +27,7 @@ export default {
         <button v-if="!placementMode" class="btn btn-sm"
                 :class="moveUnlocked ? 'btn-warning' : 'btn-success'"
                 @click="$emit('toggle-move-lock')">
-          {{ moveUnlocked ? 'Đang mở di chuyển' : 'Đang khóa vị trí' }}
+          {{ moveUnlocked ? 'Di chuyển: bật' : 'Di chuyển: khóa' }}
         </button>
         <button v-if="hasSelection" class="btn btn-danger btn-sm"
                 @click="$emit('delete')">

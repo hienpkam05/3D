@@ -30,7 +30,8 @@ const app = createApp({
     const placementMode = ref(false);
     const placingItem = ref(null);
     const showBuildingPicker = ref(false);
-    const moveUnlocked = ref(false);
+    // Models are editable by default; the toolbar can lock them afterwards.
+    const moveUnlocked = ref(true);
 
     // ---- Decorations state ----
     const decorations = reactive([]);
@@ -72,6 +73,21 @@ const app = createApp({
     let dragOffset = new THREE.Vector3();
     const DRAG_THRESHOLD = 4; // px before drag starts
     let dragDidMove = false;
+    let mapInteractionSuspended = false;
+
+    function suspendMapInteraction() {
+      if (!mapRef || mapInteractionSuspended) return;
+      mapRef.dragPan.disable();
+      mapRef.dragRotate.disable();
+      mapInteractionSuspended = true;
+    }
+
+    function resumeMapInteraction() {
+      if (!mapRef || !mapInteractionSuspended) return;
+      mapRef.dragPan.enable();
+      mapRef.dragRotate.enable();
+      mapInteractionSuspended = false;
+    }
 
     // ---- Load library manifest ----
     async function loadLibrary() {
@@ -162,11 +178,15 @@ const app = createApp({
       if (hits.length > 0) {
         const group = findModelGroup(hits[0]);
         if (group && getModelConfig(group.name)) {
-          // Keep models safe from accidental drags while the movement lock is on.
+          // A locked model remains selectable, but cannot be dragged.
           if (!moveUnlocked.value) {
             selectDecoById(group.name);
             return;
           }
+
+          // Prevent MapLibre from treating a model drag as a map-pan gesture.
+          e.preventDefault();
+          e.stopPropagation();
           // Prepare for potential drag
           dragStartMouse = { x: e.clientX, y: e.clientY };
           dragGroup = group;
@@ -183,6 +203,7 @@ const app = createApp({
               dragTarget.position.z - groundPt.z
             );
           }
+          suspendMapInteraction();
         }
       }
     }
@@ -202,11 +223,6 @@ const app = createApp({
         // Select the object being dragged
         selectDecoById(dragDecoId);
 
-        // Disable map interaction during drag
-        if (mapRef) {
-          mapRef.dragPan.disable();
-          mapRef.dragRotate.disable();
-        }
         document.body.classList.add('dragging-mode');
       }
 
@@ -242,11 +258,6 @@ const app = createApp({
         isDragging.value = false;
         document.body.classList.remove('dragging-mode');
 
-        // Re-enable map interaction
-        if (mapRef) {
-          mapRef.dragPan.enable();
-          mapRef.dragRotate.enable();
-        }
       } else if (dragStartMouse && !dragDidMove) {
         // It was a click (no drag happened) -> select or deselect
         if (dragGroup && getModelConfig(dragDecoId)) {
@@ -260,6 +271,7 @@ const app = createApp({
       dragGroup = null;
       dragTarget = null;
       dragDecoId = null;
+      resumeMapInteraction();
     }
 
     function handleCanvasClick(e) {
@@ -460,7 +472,8 @@ const app = createApp({
       mapRef.on('style.load', () => { mapRef.addLayer(customLayer); });
 
       // Mouse events for click + drag
-      mapRef.getCanvas().addEventListener('mousedown', handleMouseDown);
+      // Capture the press so MapLibre does not consume a model-drag gesture.
+      mapRef.getCanvas().addEventListener('mousedown', handleMouseDown, true);
       window.addEventListener('mousemove', handleMouseMove);
       window.addEventListener('mouseup', handleMouseUp);
       mapRef.getCanvas().addEventListener('click', handleCanvasClick);
