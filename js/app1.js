@@ -329,7 +329,16 @@ const app = createApp({
 
     // ---- Save config ----
     function saveConfig() {
+      const center = mapRef?.getCenter();
       const output = {
+        // Store the user's current camera view so reopening this config shows
+        // the same part of the map at the same zoom and angle.
+        mapView: center ? {
+          center: { lng: center.lng, lat: center.lat },
+          zoom: mapRef.getZoom(),
+          pitch: mapRef.getPitch(),
+          bearing: mapRef.getBearing(),
+        } : undefined,
         models: [...mainModelConfigs, ...decorations].map(model => ({
           ...model,
           position: { ...model.position },
@@ -344,6 +353,20 @@ const app = createApp({
       a.download = 'models-config.json';
       a.click();
       URL.revokeObjectURL(url);
+    }
+
+    function restoreMapView(map, mapView) {
+      const center = mapView?.center;
+      if (!center
+        || !Number.isFinite(center.lng)
+        || !Number.isFinite(center.lat)) return;
+
+      map.jumpTo({
+        center: [center.lng, center.lat],
+        zoom: Number.isFinite(mapView.zoom) ? mapView.zoom : map.getZoom(),
+        pitch: Number.isFinite(mapView.pitch) ? mapView.pitch : map.getPitch(),
+        bearing: Number.isFinite(mapView.bearing) ? mapView.bearing : map.getBearing(),
+      });
     }
 
     // ---- Map & Three.js init ----
@@ -419,6 +442,7 @@ const app = createApp({
           fetch('./models-config.json')
             .then(r => r.json())
             .then(cfg => {
+              restoreMapView(mapInstance, cfg.mapView);
               const mainModels = cfg.models.filter(m => m.type !== 'decoration');
               const decoModels = cfg.models.filter(m => m.type === 'decoration');
 

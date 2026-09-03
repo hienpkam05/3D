@@ -1,4 +1,13 @@
 {
+  "mapView": {
+    "center": {
+      "lng": 105.80749176406334,
+      "lat": 21.40234613493044
+    },
+    "zoom": 20.912261619793235,
+    "pitch": 60,
+    "bearing": -34.941832891571096
+  },
   "models": [
     {
       "id": "dinh-dan-ha",
@@ -6,42 +15,20 @@
       "type": "main",
       "path": "./DinhDanHa-20260827T040936Z-1-001/DinhDanHa/Dinh_Dan_Ha.glb",
       "position": {
-        "x": 2.55,
+        "x": 2.21,
         "y": 0,
-        "z": -13.23
+        "z": -11.64
       },
       "rotation": {
         "x": 0,
-        "y": 21,
+        "y": 20,
         "z": 0
       },
       "scale": {
-        "x": 0.41,
-        "y": 0.41,
-        "z": 0.41
+        "x": 0.46,
+        "y": 0.46,
+        "z": 0.46
       }
-    },
-    {
-      "id": "cay-cau-vua-1787807261152",
-      "name": "Cây cau vua",
-      "type": "decoration",
-      "path": "/assets-3d/libs/cay-cau-vua.glb",
-      "position": {
-        "x": 10.19,
-        "y": 0,
-        "z": -11.08
-      },
-      "rotation": {
-        "x": 0,
-        "y": 0,
-        "z": 0
-      },
-      "scale": {
-        "x": 1.11,
-        "y": 1.11,
-        "z": 1.11
-      },
-      "libraryId": "cay-cau-vua"
     },
     {
       "id": "cay-van-tue-1787808639733",
@@ -49,9 +36,9 @@
       "type": "decoration",
       "path": "/assets-3d/libs/cay-van-tue.glb",
       "position": {
-        "x": 8.16,
+        "x": 7.97,
         "y": 0,
-        "z": -10.93
+        "z": -9.79
       },
       "rotation": {
         "x": 0,
@@ -66,344 +53,14 @@
       "libraryId": "cay-van-tue"
     },
     {
-      "id": "cay-da-02-1787807055302",
-      "name": "Cây đa 02",
-      "type": "decoration",
-      "path": "/assets-3d/libs/cay-da-02.glb",
-      "position": {
-        "x": 7.48,
-        "y": 0,
-        "z": -23.14
-      },
-      "rotation": {
-        "x": 0,
-        "y": -19,
-        "z": 0
-      },
-      "scale": {
-        "x": 0.31,
-        "y": 0.31,
-        "z": 0.31
-      },
-      "libraryId": "cay-da-02"
-    },
-    {
-      "id": "cay-da-02-1787808401163",
-      "name": "Cây đa 02",
-      "type": "decoration",
-      "path": "/assets-3d/libs/cay-da-02.glb",
-      "position": {
-        "x": 11.97,
-        "y": 0,
-        "z": -11.26
-      },
-      "rotation": {
-        "x": 0,
-        "y": 0,
-        "z": 0
-      },
-      "scale": {
-        "x": 0.21,
-        "y": 0.21,
-        "z": 0.21
-      },
-      "libraryId": "cay-da-02"
-    },
-    {
-      "id": "cay-da-02-1787807147588",
-      "name": "Cây đa 02",
-      "type": "decoration",
-      "path": "/assets-3d/libs/cay-da-02.glb",
-      "position": {
-        "x": 1.37,
-        "y": 0,
-        "z": -16.89
-      },
-      "rotation": {
-        "x": 0,
-        "y": 58,
-        "z": 0
-      },
-      "scale": {
-        "x": 0.21,
-        "y": 0.21,
-        "z": 0.21
-      },
-      "libraryId": "cay-da-02"
-    },
-    {
-      "id": "cay-dau-co-thu-05-1787808954286",
-      "name": "Cây đầu cổ thụ 05",
-      "type": "decoration",
-      "path": "/assets-3d/libs/cay-dau-co-thu-05-3.glb",
-      "position": {
-        "x": -0.09,
-        "y": 0,
-        "z": -12.56
-      },
-      "rotation": {
-        "x": 0,
-        "y": -23,
-        "z": 0
-      },
-      "scale": {
-        "x": 0.21,
-        "y": 0.21,
-        "z": 0.21
-      },
-      "libraryId": "cay-dau-co-thu-05"
-    },
-    {
-      "id": "cay-dau-co-thu-04-1787808981700",
-      "name": "Cây đầu cổ thụ 04",
-      "type": "decoration",
-      "path": "/assets-3d/libs/cay-dau-co-thu-04-3.glb",
-      "position": {
-        "x": -0.18,
-        "y": 0,
-        "z": -12.64
-      },
-      "rotation": {
-        "x": 0,
-        "y": 0,
-        "z": 0
-      },
-      "scale": {
-        "x": 0.21,
-        "y": 0.21,
-        "z": 0.21
-      },
-      "libraryId": "cay-dau-co-thu-04"
-    },
-    {
-      "id": "cay-dau-co-thu-05-1787809094459",
-      "name": "Cây đầu cổ thụ 05",
-      "type": "decoration",
-      "path": "/assets-3d/libs/cay-dau-co-thu-05-3.glb",
-      "position": {
-        "x": -0.07,
-        "y": 0,
-        "z": -12.88
-      },
-      "rotation": {
-        "x": 0,
-        "y": -105,
-        "z": 0
-      },
-      "scale": {
-        "x": 0.21,
-        "y": 0.21,
-        "z": 0.21
-      },
-      "libraryId": "cay-dau-co-thu-05"
-    },
-    {
-      "id": "den-dan-ha-1787815852618",
-      "name": "Đền Đan Hà",
-      "type": "decoration",
-      "path": "./DinhDanHa-20260827T040936Z-1-001/DinhDanHa/Den_Dan_Ha.glb",
-      "position": {
-        "x": 3.22,
-        "y": 0,
-        "z": 14.29
-      },
-      "rotation": {
-        "x": 0,
-        "y": 86,
-        "z": 0
-      },
-      "scale": {
-        "x": 0.41,
-        "y": 0.41,
-        "z": 0.41
-      },
-      "libraryId": "den-dan-ha"
-    },
-    {
-      "id": "cay-bong-mat-12m-1787816085383",
-      "name": "Cây bóng mát 12m",
-      "type": "decoration",
-      "path": "/assets-3d/libs/cay-bong-mat-12m.glb",
-      "position": {
-        "x": 10.43,
-        "y": 0,
-        "z": 13.68
-      },
-      "rotation": {
-        "x": 0,
-        "y": 0,
-        "z": 0
-      },
-      "scale": {
-        "x": 0.2,
-        "y": 0.2,
-        "z": 0.2
-      },
-      "libraryId": "cay-bong-mat-12m"
-    },
-    {
-      "id": "cay-thong-1787816134896",
-      "name": "Cây thông",
-      "type": "decoration",
-      "path": "/assets-3d/libs/cay-thong.glb",
-      "position": {
-        "x": 8.6,
-        "y": 0,
-        "z": 10.02
-      },
-      "rotation": {
-        "x": 0,
-        "y": 0,
-        "z": 0
-      },
-      "scale": {
-        "x": 0.4,
-        "y": 0.4,
-        "z": 0.4
-      },
-      "libraryId": "cay-thong"
-    },
-    {
-      "id": "cay-cau-bung-1787816229986",
-      "name": "Cây cau bụng",
-      "type": "decoration",
-      "path": "/assets-3d/libs/cay-cau-bung.glb",
-      "position": {
-        "x": 7.5,
-        "y": 0,
-        "z": 9.99
-      },
-      "rotation": {
-        "x": 0,
-        "y": 0,
-        "z": 0
-      },
-      "scale": {
-        "x": 0.3,
-        "y": 0.3,
-        "z": 0.3
-      },
-      "libraryId": "cay-cau-bung"
-    },
-    {
-      "id": "cay-bong-mat-12m-1787816259708",
-      "name": "Cây bóng mát 12m",
-      "type": "decoration",
-      "path": "/assets-3d/libs/cay-bong-mat-12m.glb",
-      "position": {
-        "x": 6.15,
-        "y": 0,
-        "z": 9.88
-      },
-      "rotation": {
-        "x": 0,
-        "y": 0,
-        "z": 0
-      },
-      "scale": {
-        "x": 0.2,
-        "y": 0.2,
-        "z": 0.2
-      },
-      "libraryId": "cay-bong-mat-12m"
-    },
-    {
-      "id": "cay-cau-bung-1787816276284",
-      "name": "Cây cau bụng",
-      "type": "decoration",
-      "path": "/assets-3d/libs/cay-cau-bung.glb",
-      "position": {
-        "x": 4.26,
-        "y": 0,
-        "z": 9.57
-      },
-      "rotation": {
-        "x": 0,
-        "y": 0,
-        "z": 0
-      },
-      "scale": {
-        "x": 0.2,
-        "y": 0.2,
-        "z": 0.2
-      },
-      "libraryId": "cay-cau-bung"
-    },
-    {
-      "id": "cay-tung-dang-long-1787816400916",
-      "name": "Cây tùng dáng lọng",
-      "type": "decoration",
-      "path": "/assets-3d/libs/cay-tung-dang-long.glb",
-      "position": {
-        "x": 8.17,
-        "y": 0,
-        "z": 9.98
-      },
-      "rotation": {
-        "x": 0,
-        "y": -5,
-        "z": 0
-      },
-      "scale": {
-        "x": 0.2,
-        "y": 0.2,
-        "z": 0.2
-      },
-      "libraryId": "cay-tung-dang-long"
-    },
-    {
-      "id": "cay-cau-vua-1787816504953",
-      "name": "Cây cau vua",
-      "type": "decoration",
-      "path": "/assets-3d/libs/cay-cau-vua.glb",
-      "position": {
-        "x": 2.82,
-        "y": 0,
-        "z": 12
-      },
-      "rotation": {
-        "x": 0,
-        "y": 0,
-        "z": 0
-      },
-      "scale": {
-        "x": 0.41,
-        "y": 0.41,
-        "z": 0.41
-      },
-      "libraryId": "cay-cau-vua"
-    },
-    {
-      "id": "cay-bong-mat-1787816661306",
-      "name": "Cây bóng mát",
-      "type": "decoration",
-      "path": "/assets-3d/libs/cay-bong-mat.glb",
-      "position": {
-        "x": 2.82,
-        "y": 0,
-        "z": 12.83
-      },
-      "rotation": {
-        "x": 0,
-        "y": 0,
-        "z": 0
-      },
-      "scale": {
-        "x": 0.2,
-        "y": 0.2,
-        "z": 0.2
-      },
-      "libraryId": "cay-bong-mat"
-    },
-    {
       "id": "cay-cau-vua-1787816736534",
       "name": "Cây cau vua",
       "type": "decoration",
       "path": "/assets-3d/libs/cay-cau-vua.glb",
       "position": {
-        "x": 2.44,
+        "x": 2.25,
         "y": 0,
-        "z": 16.73
+        "z": 17.56
       },
       "rotation": {
         "x": 0,
@@ -418,14 +75,80 @@
       "libraryId": "cay-cau-vua"
     },
     {
+      "id": "cay-cau-vua-1787807261152",
+      "name": "Cây cau vua",
+      "type": "decoration",
+      "path": "/assets-3d/libs/cay-cau-vua.glb",
+      "position": {
+        "x": 10.2,
+        "y": 0,
+        "z": -9.76
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "scale": {
+        "x": 1.11,
+        "y": 1.11,
+        "z": 1.11
+      },
+      "libraryId": "cay-cau-vua"
+    },
+    {
+      "id": "cay-cau-vua-1787816504953",
+      "name": "Cây cau vua",
+      "type": "decoration",
+      "path": "/assets-3d/libs/cay-cau-vua.glb",
+      "position": {
+        "x": 2.38,
+        "y": 0.2,
+        "z": 13.81
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "scale": {
+        "x": 0.41,
+        "y": 0.41,
+        "z": 0.41
+      },
+      "libraryId": "cay-cau-vua"
+    },
+    {
+      "id": "cay-bong-mat-12m-1787816259708",
+      "name": "Cây bóng mát 12m",
+      "type": "decoration",
+      "path": "/assets-3d/libs/cay-bong-mat-12m.glb",
+      "position": {
+        "x": 5.88,
+        "y": 0,
+        "z": 11.71
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "scale": {
+        "x": 0.2,
+        "y": 0.2,
+        "z": 0.2
+      },
+      "libraryId": "cay-bong-mat-12m"
+    },
+    {
       "id": "cay-bong-mat-1787816788754",
       "name": "Cây bóng mát",
       "type": "decoration",
       "path": "/assets-3d/libs/cay-bong-mat.glb",
       "position": {
-        "x": 3.58,
+        "x": 4.1,
         "y": 0,
-        "z": 15.9
+        "z": 16.73
       },
       "rotation": {
         "x": 0,
@@ -440,14 +163,58 @@
       "libraryId": "cay-bong-mat"
     },
     {
+      "id": "cay-bong-mat-1787816661306",
+      "name": "Cây bóng mát",
+      "type": "decoration",
+      "path": "/assets-3d/libs/cay-bong-mat.glb",
+      "position": {
+        "x": 2.3,
+        "y": 0.2,
+        "z": 14.48
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "scale": {
+        "x": 0.2,
+        "y": 0.2,
+        "z": 0.2
+      },
+      "libraryId": "cay-bong-mat"
+    },
+    {
+      "id": "cay-bong-mat-12m-1787816085383",
+      "name": "Cây bóng mát 12m",
+      "type": "decoration",
+      "path": "/assets-3d/libs/cay-bong-mat-12m.glb",
+      "position": {
+        "x": 9.94,
+        "y": 0,
+        "z": 15.97
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "scale": {
+        "x": 0.2,
+        "y": 0.2,
+        "z": 0.2
+      },
+      "libraryId": "cay-bong-mat-12m"
+    },
+    {
       "id": "cay-bong-mat-1787816804177",
       "name": "Cây bóng mát",
       "type": "decoration",
       "path": "/assets-3d/libs/cay-bong-mat.glb",
       "position": {
-        "x": 3.56,
+        "x": 4.08,
         "y": 0,
-        "z": 15.91
+        "z": 16.72
       },
       "rotation": {
         "x": 0,
@@ -462,14 +229,102 @@
       "libraryId": "cay-bong-mat"
     },
     {
+      "id": "cay-cau-bung-1787816229986",
+      "name": "Cây cau bụng",
+      "type": "decoration",
+      "path": "/assets-3d/libs/cay-cau-bung.glb",
+      "position": {
+        "x": 7.23,
+        "y": 0,
+        "z": 11.97
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "scale": {
+        "x": 0.3,
+        "y": 0.3,
+        "z": 0.3
+      },
+      "libraryId": "cay-cau-bung"
+    },
+    {
+      "id": "cay-xanh-cong-vien-20m-1787817199121",
+      "name": "Cây xanh công viên 20m",
+      "type": "decoration",
+      "path": "/assets-3d/libs/cay-xanh-cong-vien-20m.glb",
+      "position": {
+        "x": -3.2,
+        "y": 0,
+        "z": 9.73
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "scale": {
+        "x": 0.21,
+        "y": 0.21,
+        "z": 0.21
+      },
+      "libraryId": "cay-xanh-cong-vien-20m"
+    },
+    {
+      "id": "cay-cau-bung-1787816276284",
+      "name": "Cây cau bụng",
+      "type": "decoration",
+      "path": "/assets-3d/libs/cay-cau-bung.glb",
+      "position": {
+        "x": 4.04,
+        "y": 0,
+        "z": 11.38
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "scale": {
+        "x": 0.2,
+        "y": 0.2,
+        "z": 0.2
+      },
+      "libraryId": "cay-cau-bung"
+    },
+    {
+      "id": "cay-thong-1787816134896",
+      "name": "Cây thông",
+      "type": "decoration",
+      "path": "/assets-3d/libs/cay-thong.glb",
+      "position": {
+        "x": 8.35,
+        "y": 0,
+        "z": 12.06
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "scale": {
+        "x": 0.4,
+        "y": 0.4,
+        "z": 0.4
+      },
+      "libraryId": "cay-thong"
+    },
+    {
       "id": "cay-tung-1-1787817048408",
       "name": "Cây tùng 1",
       "type": "decoration",
       "path": "/assets-3d/libs/cay-tung-1.glb",
       "position": {
-        "x": -0.65,
+        "x": -1.27,
         "y": 0.7,
-        "z": 18.29
+        "z": 19.54
       },
       "rotation": {
         "x": 0,
@@ -489,9 +344,53 @@
       "type": "decoration",
       "path": "/assets-3d/libs/cay-tung-1.glb",
       "position": {
-        "x": 0.13,
+        "x": -1.07,
         "y": 0.7,
-        "z": 16.95
+        "z": 18.14
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "libraryId": "cay-tung-1"
+    },
+    {
+      "id": "cay-xanh-cong-vien-20m-1787817249096",
+      "name": "Cây xanh công viên 20m",
+      "type": "decoration",
+      "path": "/assets-3d/libs/cay-xanh-cong-vien-20m.glb",
+      "position": {
+        "x": -12,
+        "y": 0,
+        "z": 17.48
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "scale": {
+        "x": 0.21,
+        "y": 0.21,
+        "z": 0.21
+      },
+      "libraryId": "cay-xanh-cong-vien-20m"
+    },
+    {
+      "id": "cay-tung-1-1787817153013",
+      "name": "Cây tùng 1",
+      "type": "decoration",
+      "path": "/assets-3d/libs/cay-tung-1.glb",
+      "position": {
+        "x": -0.12,
+        "y": 0.7,
+        "z": 12.52
       },
       "rotation": {
         "x": 0,
@@ -511,9 +410,9 @@
       "type": "decoration",
       "path": "/assets-3d/libs/cay-tung-1.glb",
       "position": {
-        "x": 0.26,
+        "x": -0.36,
         "y": 0.7,
-        "z": 13.25
+        "z": 13.9
       },
       "rotation": {
         "x": 0,
@@ -528,70 +427,26 @@
       "libraryId": "cay-tung-1"
     },
     {
-      "id": "cay-tung-1-1787817153013",
-      "name": "Cây tùng 1",
+      "id": "cay-tung-dang-long-1787816400916",
+      "name": "Cây tùng dáng lọng",
       "type": "decoration",
-      "path": "/assets-3d/libs/cay-tung-1.glb",
+      "path": "/assets-3d/libs/cay-tung-dang-long.glb",
       "position": {
-        "x": -0.22,
-        "y": 0.7,
-        "z": 12.26
+        "x": 7.87,
+        "y": 0,
+        "z": 12.02
       },
       "rotation": {
         "x": 0,
-        "y": 0,
+        "y": -5,
         "z": 0
       },
       "scale": {
-        "x": 1,
-        "y": 1,
-        "z": 1
+        "x": 0.2,
+        "y": 0.2,
+        "z": 0.2
       },
-      "libraryId": "cay-tung-1"
-    },
-    {
-      "id": "cay-xanh-cong-vien-20m-1787817199121",
-      "name": "Cây xanh công viên 20m",
-      "type": "decoration",
-      "path": "/assets-3d/libs/cay-xanh-cong-vien-20m.glb",
-      "position": {
-        "x": -2.92,
-        "y": 0,
-        "z": 9.01
-      },
-      "rotation": {
-        "x": 0,
-        "y": 0,
-        "z": 0
-      },
-      "scale": {
-        "x": 0.21,
-        "y": 0.21,
-        "z": 0.21
-      },
-      "libraryId": "cay-xanh-cong-vien-20m"
-    },
-    {
-      "id": "cay-xanh-cong-vien-20m-1787817249096",
-      "name": "Cây xanh công viên 20m",
-      "type": "decoration",
-      "path": "/assets-3d/libs/cay-xanh-cong-vien-20m.glb",
-      "position": {
-        "x": -11.4,
-        "y": 0,
-        "z": 17
-      },
-      "rotation": {
-        "x": 0,
-        "y": 0,
-        "z": 0
-      },
-      "scale": {
-        "x": 0.21,
-        "y": 0.21,
-        "z": 0.21
-      },
-      "libraryId": "cay-xanh-cong-vien-20m"
+      "libraryId": "cay-tung-dang-long"
     },
     {
       "id": "cay-da-02-1787817262690",
@@ -599,9 +454,9 @@
       "type": "decoration",
       "path": "/assets-3d/libs/cay-da-02.glb",
       "position": {
-        "x": -12.02,
+        "x": -12.61,
         "y": 0,
-        "z": 14.06
+        "z": 13.99
       },
       "rotation": {
         "x": 0,
@@ -614,6 +469,160 @@
         "z": 0.21
       },
       "libraryId": "cay-da-02"
+    },
+    {
+      "id": "cay-da-02-1787807055302",
+      "name": "Cây đa 02",
+      "type": "decoration",
+      "path": "/assets-3d/libs/cay-da-02.glb",
+      "position": {
+        "x": 7.56,
+        "y": 0,
+        "z": -22.46
+      },
+      "rotation": {
+        "x": 0,
+        "y": -19,
+        "z": 0
+      },
+      "scale": {
+        "x": 0.31,
+        "y": 0.31,
+        "z": 0.31
+      },
+      "libraryId": "cay-da-02"
+    },
+    {
+      "id": "cay-da-02-1787807147588",
+      "name": "Cây đa 02",
+      "type": "decoration",
+      "path": "/assets-3d/libs/cay-da-02.glb",
+      "position": {
+        "x": 0.58,
+        "y": 0,
+        "z": -16.45
+      },
+      "rotation": {
+        "x": 0,
+        "y": 58,
+        "z": 0
+      },
+      "scale": {
+        "x": 0.21,
+        "y": 0.21,
+        "z": 0.21
+      },
+      "libraryId": "cay-da-02"
+    },
+    {
+      "id": "cay-da-02-1787808401163",
+      "name": "Cây đa 02",
+      "type": "decoration",
+      "path": "/assets-3d/libs/cay-da-02.glb",
+      "position": {
+        "x": 12.34,
+        "y": 0,
+        "z": -10
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "scale": {
+        "x": 0.21,
+        "y": 0.21,
+        "z": 0.21
+      },
+      "libraryId": "cay-da-02"
+    },
+    {
+      "id": "cay-dau-co-thu-04-1787808981700",
+      "name": "Cây đầu cổ thụ 04",
+      "type": "decoration",
+      "path": "/assets-3d/libs/cay-dau-co-thu-04-3.glb",
+      "position": {
+        "x": 1.69,
+        "y": 0,
+        "z": -9.18
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "scale": {
+        "x": 0.21,
+        "y": 0.21,
+        "z": 0.21
+      },
+      "libraryId": "cay-dau-co-thu-04"
+    },
+    {
+      "id": "cay-dau-co-thu-05-1787808954286",
+      "name": "Cây đầu cổ thụ 05",
+      "type": "decoration",
+      "path": "/assets-3d/libs/cay-dau-co-thu-05-3.glb",
+      "position": {
+        "x": 1.67,
+        "y": 0,
+        "z": -9.05
+      },
+      "rotation": {
+        "x": 0,
+        "y": -23,
+        "z": 0
+      },
+      "scale": {
+        "x": 0.21,
+        "y": 0.21,
+        "z": 0.21
+      },
+      "libraryId": "cay-dau-co-thu-05"
+    },
+    {
+      "id": "cay-dau-co-thu-05-1787809094459",
+      "name": "Cây đầu cổ thụ 05",
+      "type": "decoration",
+      "path": "/assets-3d/libs/cay-dau-co-thu-05-3.glb",
+      "position": {
+        "x": 1.53,
+        "y": 0,
+        "z": -9.14
+      },
+      "rotation": {
+        "x": 0,
+        "y": -105,
+        "z": 0
+      },
+      "scale": {
+        "x": 0.21,
+        "y": 0.21,
+        "z": 0.21
+      },
+      "libraryId": "cay-dau-co-thu-05"
+    },
+    {
+      "id": "den-dan-ha-1787815852618",
+      "name": "Đền Đan Hà",
+      "type": "decoration",
+      "path": "./DinhDanHa-20260827T040936Z-1-001/DinhDanHa/Den_Dan_Ha.glb",
+      "position": {
+        "x": 2.55,
+        "y": 0,
+        "z": 15.84
+      },
+      "rotation": {
+        "x": 0,
+        "y": 80,
+        "z": 0
+      },
+      "scale": {
+        "x": 0.41,
+        "y": 0.41,
+        "z": 0.41
+      },
+      "libraryId": "den-dan-ha"
     }
   ]
 }
